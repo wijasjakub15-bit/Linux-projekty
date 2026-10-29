@@ -33,3 +33,7 @@ sudo ./audyt.sh
 **Plik:** [`Audyt bezpieczenstwa/audyt.sh`](./Audyt%20bezpieczenstwa/audyt.sh)
 
 ---
+
+## O mnie
+
+Każdy skrypt w tym repozytorium został napisany przeze mnie jako część nauki. Przy pojedynczych komendach, których nie pamiętałem, korzystałem z dokumentacji (`man`, `--help`) oraz z podpowiedzi, a całą strukturę i logikę skryptów napisałem sam.
