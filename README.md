@@ -30,7 +30,7 @@ sudo ./audyt.sh
 
 **Ograniczenia:** skrypt tylko pokazuje wyniki, niczego sam nie zmienia ani nie naprawia. Sprawdzanie aktualizacji działa na systemach z menedżerem `apt`. Wymaga uprawnień roota.
 
-**Plik:** [`Audyt bezpieczenstwa/audyt.sh`](./Audyt%20bezpieczenstwa/audyt.sh)
+**Plik:** [`Audyt/audyt.sh`](./Audyt/audyt.sh)
 
 ---
 
