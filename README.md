@@ -51,7 +51,7 @@ chmod +x analizator.sh
 
 **Ograniczenia:** skrypt tylko wypisuje podejrzane adresy, nie blokuje ich. Plik `podejrzane.txt` zapisuje się w folderze, z którego uruchomiono skrypt.
 
-**Pliki:** [`Analizator-logow/`](./Analizator-logow/)
+**Pliki:** [`Analizator logow/`](./Analizator%20logow/)
 
 ---
 
