@@ -55,6 +55,36 @@ chmod +x analizator.sh
 
 ---
 
+### Monitor integralności plików
+
+Skrypt zapisuje sumy kontrolne wybranych plików i później sprawdza, czy któryś z nich został zmieniony lub usunięty.
+
+**Co robi:**
+- tryb `init` liczy sumę SHA-256 każdego pilnowanego pliku i zapisuje ją do pliku wzorca
+- tryb `check` porównuje aktualne sumy ze wzorcem
+- dla każdego pliku wypisuje `OK`, informację o zmianie albo o usunięciu
+- na końcu podaje, ile plików sprawdzono i ile zmian wykryto
+- kod wyjścia to `0`, gdy wszystko się zgadza, i `1`, gdy wykryto zmianę lub wystąpił błąd
+
+**Jak uruchomić:**
+
+```bash
+chmod +x integralnosc.sh
+sudo ./integralnosc.sh init
+sudo ./integralnosc.sh check
+```
+
+**Ograniczenia:**
+- lista pilnowanych plików i ścieżka wzorca są wpisane na stałe na początku skryptu, więc przed użyciem trzeba je dostosować
+- brakujący plik w trybie `init` jest tylko zgłaszany ostrzeżeniem, a kod wyjścia i tak wynosi `0`, więc taki plik nie będzie pilnowany
+- dodatkowe argumenty są ignorowane (`check init` wykona się jako `check`)
+- wzorzec jest zwykłym plikiem, więc root może go podmienić, a skrypt tego nie wykryje
+- pliki, które zmieniają się legalnie (np. logi), będą zgłaszane jako zmienione
+
+**Plik:** [`Integralnosc/integralnosc.sh`](./Integralnosc/integralnosc.sh)
+
+---
+
 ## O mnie
 
 Każdy skrypt w tym repozytorium napisałem sam w ramach nauki. Przy komendach, których nie pamiętałem, korzystałem z dokumentacji (`man`, `--help`).
