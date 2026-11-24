@@ -57,7 +57,7 @@ if [ -z "$duplikaty_uid" ]; then
 	echo "OK: brak kont z duplikatem w UID"
 else
 	while read uid; do
-		echo "[!!!]: UID $uid zawieraja conajmniej 2 konta"
+		echo "[!!!]: UID $uid zawieraja co najmniej 2 konta"
 		problemy=$((problemy+1))
 	done <<< "$duplikaty_uid"
 fi
