@@ -85,6 +85,38 @@ sudo ./integralnosc.sh check
 
 ---
 
+### Audyt kont użytkowników
+
+Skrypt sprawdza konta w systemie pod kątem typowych problemów i wypisuje krótki raport. Przy każdej kontroli pokazuje `[OK]` (dobrze) albo `[!!!]` (do poprawy).
+
+**Co robi:**
+- sprawdza, czy skrypt działa jako root
+- szuka kont z UID równym 0 poza rootem
+- szuka kont z pustym hasłem w `/etc/shadow`
+- szuka kont z powłoką logowania wśród kont systemowych (UID poniżej 1000)
+- szuka powtórzonych UID
+- wypisuje zwykłe konta (informacyjnie, nie liczy ich jako problem)
+- na końcu podaje liczbę znalezionych problemów
+- kod wyjścia to `0`, gdy nie znaleziono problemów, i `1`, gdy coś znaleziono lub wystąpił błąd
+
+**Jak uruchomić:**
+
+```bash
+chmod +x audyt_kont.sh
+sudo ./audyt_kont.sh
+```
+
+**Ograniczenia:**
+- działa na Debianie i Ubuntu, bo granica zwykłych kont (UID 1000) jest wpisana na stałe w skrypcie
+- konto `sync` ma powłokę `/bin/sync`, więc kontrola powłoki zgłasza je jako konto z powłoką logowania, a skrypt na czystym Ubuntu kończy się kodem `1`; to fałszywy alarm, a wyjątku po nazwie konta nie dodano celowo, bo dałoby się go obejść zmianą nazwy konta
+- licznik na końcu liczy znalezione problemy, a nie konta (konto z UID 0 jest liczone w kilku kontrolach)
+- hasła sprawdza tylko w `/etc/shadow`, a puste pole hasła w `/etc/passwd` nie jest wykrywane
+- skrypt tylko pokazuje wyniki, niczego nie naprawia
+
+**Plik:** [`Audyt kont/audyt_kont.sh`](./Audyt%20kont/audyt_kont.sh)
+
+---
+
 ## O mnie
 
 Każdy skrypt w tym repozytorium napisałem sam w ramach nauki. Przy komendach, których nie pamiętałem, korzystałem z dokumentacji (`man`, `--help`).
